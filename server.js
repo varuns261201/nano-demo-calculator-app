@@ -29,7 +29,7 @@ app.post("/calculator/add", (req, res) => {
 app.post("/calculator/subtract", (req, res) => {
   const numbers = new Numbers(req.body.first, req.body.second);
   if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
-    const resultt = numbers.first - numbers.second;
+    const result = numbers.first - numbers.second;
     res.status(200).json({ result });
   } else {
     res.status(400).json({ error: "Invalid input" });
