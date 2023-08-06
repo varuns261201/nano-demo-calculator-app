@@ -3,7 +3,11 @@ const bodyParser = require("body-parser");
 const app = express();
 const PORT = 8080;
 
+const baseUrl = "/calculator"; //** */
+const baseRouter = express.Router(); //** */
+
 app.use(bodyParser.json());
+app.use(express.json()); //** */
 
 class Numbers {
   constructor(first, second) {
@@ -12,11 +16,11 @@ class Numbers {
   }
 }
 
-app.get("/calculator/greeting", (req, res) => {
+baseRouter.get("/calculator/greeting", (req, res) => {
   res.status(200).send("Hello World!");
 });
 
-app.post("/calculator/add", (req, res) => {
+baseRouter.post("/calculator/add", (req, res) => {
   const numbers = new Numbers(req.body.first, req.body.second);
   if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
     const result = numbers.first + numbers.second;
@@ -26,7 +30,7 @@ app.post("/calculator/add", (req, res) => {
   }
 });
 
-app.post("/calculator/subtract", (req, res) => {
+baseRouter.post("/calculator/subtract", (req, res) => {
   const numbers = new Numbers(req.body.first, req.body.second);
   if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
     const result = numbers.first - numbers.second;
@@ -35,6 +39,7 @@ app.post("/calculator/subtract", (req, res) => {
     res.status(400).json({ error: "Invalid input" });
   }
 });
+app.use(baseUrl, baseRouter); //** */
 app.listen(PORT, () => {
   console.log("Server running at PORT", PORT);
 });
