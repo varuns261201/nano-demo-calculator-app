@@ -6,9 +6,9 @@ const port = 8080;
 app.use(bodyParser.json());
 
 class Numbers {
-  constructor(first, second) {
-    this.first = first;
-    this.second = second;
+  constructor(firstt, secondd) {
+    this.firstt = firstt;
+    this.secondd = secondd;
   }
 }
 
@@ -17,9 +17,9 @@ app.get("/calculator/greeting", (req, res) => {
 });
 
 app.post("/calculator/add", (req, res) => {
-  const numbers = new Numbers(req.body.first, req.body.second);
-  if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
-    const result = numbers.first + numbers.second;
+  const numbers = new Numbers(req.body.firstt, req.body.secondd);
+  if (!isNaN(numbers.firstt) && !isNaN(numbers.secondd)) {
+    const result = numbers.firstt + numbers.secondd;
     res.status(200).json({ result });
   } else {
     res.status(400).json({ error: "Invalid input" });
@@ -27,9 +27,9 @@ app.post("/calculator/add", (req, res) => {
 });
 
 app.post("/calculator/subtract", (req, res) => {
-  const numbers = new Numbers(req.body.first, req.body.second);
-  if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
-    const result = numbers.first - numbers.second;
+  const numbers = new Numbers(req.body.firstt, req.body.secondd);
+  if (!isNaN(numbers.firstt) && !isNaN(numbers.secondd)) {
+    const result = numbers.firstt - numbers.secondd;
     res.status(200).json({ result });
   } else {
     res.status(400).json({ error: "Invalid input" });
