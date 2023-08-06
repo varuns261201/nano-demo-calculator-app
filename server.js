@@ -16,11 +16,11 @@ class Numbers {
   }
 }
 
-baseRouter.get("/calculator/greeting", (req, res) => {
+baseRouter.get("/greeting", (req, res) => {
   res.status(200).send("Hello World!");
 });
 
-baseRouter.post("/calculator/add", (req, res) => {
+baseRouter.post("/add", (req, res) => {
   const numbers = new Numbers(req.body.first, req.body.second);
   if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
     const result = numbers.first + numbers.second;
@@ -30,7 +30,7 @@ baseRouter.post("/calculator/add", (req, res) => {
   }
 });
 
-baseRouter.post("/calculator/subtract", (req, res) => {
+baseRouter.post("/subtract", (req, res) => {
   const numbers = new Numbers(req.body.first, req.body.second);
   if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
     const result = numbers.first - numbers.second;
