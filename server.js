@@ -1,14 +1,14 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
-const port = 8080;
+const PORT = 8080;
 
 app.use(bodyParser.json());
 
 class Numbers {
-  constructor(firstt, secondd) {
-    this.firstt = firstt;
-    this.secondd = secondd;
+  constructor(first, second) {
+    this.first = first;
+    this.second = second;
   }
 }
 
@@ -17,9 +17,9 @@ app.get("/calculator/greeting", (req, res) => {
 });
 
 app.post("/calculator/add", (req, res) => {
-  const numbers = new Numbers(req.body.firstt, req.body.secondd);
-  if (!isNaN(numbers.firstt) && !isNaN(numbers.secondd)) {
-    const result = numbers.firstt + numbers.secondd;
+  const numbers = new Numbers(req.body.first, req.body.second);
+  if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
+    const result = numbers.first + numbers.second;
     res.status(200).json({ result });
   } else {
     res.status(400).json({ error: "Invalid input" });
@@ -27,18 +27,21 @@ app.post("/calculator/add", (req, res) => {
 });
 
 app.post("/calculator/subtract", (req, res) => {
-  const numbers = new Numbers(req.body.firstt, req.body.secondd);
-  if (!isNaN(numbers.firstt) && !isNaN(numbers.secondd)) {
-    const result = numbers.firstt - numbers.secondd;
+  const numbers = new Numbers(req.body.first, req.body.second);
+  if (!isNaN(numbers.first) && !isNaN(numbers.second)) {
+    const result = numbers.first - numbers.second;
     res.status(200).json({ result });
   } else {
     res.status(400).json({ error: "Invalid input" });
   }
 });
-
-app.listen(port, "0.0.0.0", () => {
-  console.log(`Server is listening on port ${port}`);
+app.listen(PORT, () => {
+  console.log("Server running at PORT", PORT);
 });
+
+// app.listen(port, "0.0.0.0", () => {
+// console.log(`Server is listening on port ${port}`);
+// });
 
 // const express = require("express");
 // const app = express();
